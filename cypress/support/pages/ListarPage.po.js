@@ -1,4 +1,4 @@
-class TelaInicialPage {
+class ListarPage {
     // Atributos da classe são os seletores da nossa tela
 
     visitar() {
@@ -21,6 +21,20 @@ class TelaInicialPage {
         cy.get('.hhNJgA').click();
     }
 
+    clicarBotaoProxima() {
+        cy.contains("button", "Próxima").click();
+    }
+
+    clicarBotaoAnterior() {
+        cy.contains("button", "Anterior").click();
+    }
+
+    clicarBotaoRaro() {
+        cy.get(".sc-dkzDqf.jbJCFN").click();
+    }
+
+
+
 }
 
-export var telaInicialPage = new TelaInicialPage();
+export var listarPage = new ListarPage();

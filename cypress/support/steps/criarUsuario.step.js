@@ -1,26 +1,31 @@
-import { telaInicialPage } from '../pages/telaInicialPage.po';
+import { listarPage } from '../pages/ListarPage.po';
 
 import { cadastroPage } from '../pages/CadastroPage.po';
 
 Given("que acessei a página de cadastro do usuário", () => {
-    telaInicialPage.visitar();
-    telaInicialPage.clicarBotaoNovo();
+    listarPage.visitar();
+    listarPage.clicarBotaoNovo();
     cy.url().should("be.equal", "https://academy-crud-frontend.herokuapp.com/users/novo");
 });
 
 Given("preencho os dados do usuário", (tabela) => {
-    // cy.intercept("https://crud-api-academy.herokuapp.com/api/v1/users", [{
-    //     method: "POST",
-    //     body: {
-    //         name: dadosTabela.nome,
-    //         email: dadosTabela.email,
-    //     }
-    // }]);
     cadastroPage.preencherFormulario(tabela);
+    var dadosTabela = tabela.rowsHash();
+    cy.intercept("https://crud-api-academy.herokuapp.com/api/v1/users", {
+        statusCode: 201,
+        body: [{
+            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "name": dadosTabela.nome,
+            "email": dadosTabela.email,
+            "createdAt": "2022-05-07T13:19:35.351Z",
+            "updatedAt": "2022-05-07T13:19:35.351Z"
+        }]
+    });
 });
 
-Then("visualizo uma mensagem de sucesso", () => {
-    cadastroPage.verificarMensagemUsuarioSalvo();
+Then("visualizo uma mensagem de sucesso de cadastro", (mensagem) => {
+    var dadoMensagem = mensagem.rowsHash();
+    cadastroPage.verificarMensagemUsuarioSalvo(dadoMensagem.mensagem);
 });
 
 When("preencho o campo nome", (nome) => {
@@ -55,7 +60,7 @@ When("clico no botão da Raro", () => {
 });
 
 Then("visualizo a página inicial do sistema", () => {
-    telaInicialPage.testarUrl();
+    listarPage.testarUrl();
 });
 
 Then("visualizo as mensagens de erro", (tabela) => {

@@ -1,20 +1,20 @@
-import { telaInicialPage } from '../pages/telaInicialPage.po';
+import { listarPage } from '../pages/ListarPage.po';
 
 import { atualizarPage } from '../pages/AtualizarPage.po';
 
 Given("acessei a tela inicial do sistema", () => {
-    telaInicialPage.visitar();
+    listarPage.visitar();
 });
 
 And("acessei a tela de atualizar usuário", () => {
-    telaInicialPage.clicarBotaoVerDetalhes();
+    listarPage.clicarBotaoVerDetalhes();
 });
 
 When("clico no botão editar", () => {
     atualizarPage.clicarBotaoEditar();
 });
 
-Given("preencho os dados do usuário", (tabela) => {
+Given("atualizo os dados do usuário", (tabela) => {
     // cy.intercept("https://crud-api-academy.herokuapp.com/api/v1/users", [{
     //     method: "POST",
     //     body: {
@@ -27,16 +27,6 @@ Given("preencho os dados do usuário", (tabela) => {
 
 Then("visualizo uma mensagem de sucesso", () => {
     atualizarPage.verificarMensagemUsuarioAtualizado();
-});
-
-When("preencho o campo nome", (nome) => {
-    var dadoNome = nome.rowsHash();
-    atualizarPage.atualizarNome(dadoNome.nome);
-});
-
-When("preencho o campo email", (email) => {
-    var dadoEmail = email.rowsHash();
-    atualizarPage.atualizarEmail(dadoEmail.email);
 });
 
 Then("visualizo uma mensagem de erro", (mensagem) => {
@@ -61,7 +51,7 @@ When("clico no botão da Raro", () => {
 });
 
 Then("visualizo a página inicial do sistema", () => {
-    telaInicialPage.testarUrl();
+    listarPage.testarUrl();
 });
 
 When("apago o campo e-mail", () => {

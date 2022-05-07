@@ -6,6 +6,7 @@ Feature: Criar Usuário
     Background: Acessa o sistema e a página de registro de usuário
         Given que acessei a página de cadastro do usuário
 
+@ignore
         Scenario: Criar usuário sem preencher nome e e-mail
             When clico no botão salvar
             Then visualizo as mensagens de erro
@@ -18,7 +19,8 @@ Feature: Criar Usuário
             | nome   | Rafael            | 
             | email  | rafalaa@gmail.com | 
             And clico no botão salvar
-            Then visualizo uma mensagem de sucesso
+            Then visualizo uma mensagem de sucesso de cadastro
+            | mensagem | Usuário salvo com sucesso |
   
 @ignore
         Scenario: Cadastrar um novo usuário sem colocar um email	
@@ -37,21 +39,25 @@ Feature: Criar Usuário
 
 @ignore
         Scenario: Cadastrar um novo usuário com email sem "@"	
-            When preencho os dados do usuário
+            When preencho o campo nome
             | nome   | Rafael         |
+            And clico no botão salvar
+            And preencho o campo email
             | email  | rataotoma.com  |
             And clico no botão salvar
             Then visualizo uma mensagem de erro
-            | mensagem | Formato de e-mail inválido. |
+            | mensagem | Formato de e-mail inválido |
     
 @ignore
         Scenario: Cadastrar um novo usuário com email sem ".com"	
-            When preencho os dados do usuário
+            When preencho o campo nome
             | nome   | Rafael         |
+            And clico no botão salvar
+            And preencho o campo email
             | email  | rataotoma@     |
             And clico no botão salvar
             Then visualizo uma mensagem de erro
-            | mensagem | Formato de e-mail inválido. |
+            | mensagem | Formato de e-mail inválido |
 @ignore
         Scenario: Cadastrar um novo usuário com email com mais de 60 caracteres	
            When preencho os dados do usuário
@@ -91,14 +97,12 @@ Feature: Criar Usuário
             | mensagem | Informe pelo menos 4 letras para o nome. |
 @ignore
         Scenario: Cadastrar usuário com e-mail com menos de 4 caracteres
-            When preencho os dados do usuário
+            When preencho o campo nome
             | nome   | Rafaela                |
-            | email  | drataotomoi@gmail.co   |
             And clico no botão salvar
-            And espero um segundo
-            When preencho os dados do usuário
-            | nome   | Rafael              |
-            | email  | ra                  |
+            And preencho o campo email
+            | email  | dra   |
+            And clico no botão salvar
             Then visualizo uma mensagem de erro
             | mensagem | Informe pelo menos 4 caracteres para o e-mail. |
 @ignore

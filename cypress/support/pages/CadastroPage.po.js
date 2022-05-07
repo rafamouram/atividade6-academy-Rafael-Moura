@@ -17,8 +17,8 @@ class CadastroPage {
         cy.contains("button", "Salvar").click();
     }
 
-    verificarMensagemUsuarioSalvo() {
-        cy.contains("Usuário salvo com sucesso").should("be.visible");
+    verificarMensagemUsuarioSalvo(mensagem) {
+        cy.contains(mensagem).should("be.visible");
     }
 
     verificarBotaoVoltar() {
@@ -33,6 +33,10 @@ class CadastroPage {
 
     verificarMensagemErro(mensagem) {
         cy.contains(mensagem).should("be.visible");
+    }
+
+    clicarBotaoRaro() {
+        cy.get(".sc-dkzDqf.jbJCFN").click();
     }
 }
 export var cadastroPage = new CadastroPage();

@@ -1,9 +1,9 @@
-import { telaInicialPage } from '../pages/TelaInicialPage.po';
+import { listarPage } from '../pages/ListarPage.po';
 
 import { removerPage } from '../pages/RemoverPage.po';
 
 Given('acessei a tela inicial do sistema', () => {
-    telaInicialPage.visitar();
+    listarPage.visitar();
 });
 
 When('clico em confirmar', () => {
@@ -11,7 +11,7 @@ When('clico em confirmar', () => {
 });
 
 Given('cliquei no botão de lixeira', () => {
-    telaInicialPage.clicarBotaoLixeira();
+    listarPage.clicarBotaoLixeira();
 });
 
 When('clico no botão de cancelar', () => {
@@ -23,7 +23,7 @@ When('clico no botão x', () => {
 });
 
 Then('visualizo a tela inicial', () => {
-    telaInicialPage.testarUrl();
+    listarPage.testarUrl();
 });
 
 Then('visualizo uma mensagem de sucesso de remoção', (mensagem) => {
