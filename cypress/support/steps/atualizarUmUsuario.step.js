@@ -1,11 +1,12 @@
 import { telaInicialPage } from '../pages/telaInicialPage.po';
 
-import { cadastroPage } from '../pages/CadastroPage.po';
-
 import { atualizarPage } from '../pages/AtualizarPage.po';
 
-Given("que acessei a página de atualizar usuário", () => {
+Given("acessei a tela inicial do sistema", () => {
     telaInicialPage.visitar();
+});
+
+And("acessei a tela de atualizar usuário", () => {
     telaInicialPage.clicarBotaoVerDetalhes();
 });
 
@@ -21,30 +22,30 @@ Given("preencho os dados do usuário", (tabela) => {
     //         email: dadosTabela.email,
     //     }
     // }]);
-    cadastroPage.preencherFormulario(tabela);
+    atualizarPage.atualizarFormulario(tabela);
 });
 
 Then("visualizo uma mensagem de sucesso", () => {
-    cadastroPage.verificarMensagemUsuarioSalvo();
+    atualizarPage.verificarMensagemUsuarioAtualizado();
 });
 
 When("preencho o campo nome", (nome) => {
     var dadoNome = nome.rowsHash();
-    cadastroPage.preencherNome(dadoNome.nome);
+    atualizarPage.atualizarNome(dadoNome.nome);
 });
 
 When("preencho o campo email", (email) => {
     var dadoEmail = email.rowsHash();
-    cadastroPage.preencherEmail(dadoEmail.email);
+    atualizarPage.atualizarEmail(dadoEmail.email);
 });
 
 Then("visualizo uma mensagem de erro", (mensagem) => {
     var dadoMensagem = mensagem.rowsHash();
-    cadastroPage.verificarMensagemErro(dadoMensagem.mensagem);
+    atualizarPage.verificarMensagemErro(dadoMensagem.mensagem);
 });
 
 And("clico no botão salvar", () => {
-    cadastroPage.clicarBotaoSalvar();
+    atualizarPage.clicarBotaoSalvar();
 });
 
 And("espero um segundo", () => {
@@ -52,9 +53,21 @@ And("espero um segundo", () => {
 });
 
 When("clico no botão voltar", () => {
-    cadastroPage.verificarBotaoVoltar();
+    atualizarPage.verificarBotaoVoltar();
 });
 
-Then("visualizo a página de login", () => {
+When("clico no botão da Raro", () => {
+    atualizarPage.clicarBotaoRaro();
+});
+
+Then("visualizo a página inicial do sistema", () => {
     telaInicialPage.testarUrl();
+});
+
+When("apago o campo e-mail", () => {
+    atualizarPage.apagarEmail();
+});
+
+When("apago o campo nome", () => {
+    atualizarPage.apagarNome();
 });

@@ -50,6 +50,16 @@ When("clico no botão voltar", () => {
     cadastroPage.verificarBotaoVoltar();
 });
 
-Then("visualizo a página de login", () => {
+When("clico no botão da Raro", () => {
+    atualizarPage.clicarBotaoRaro();
+});
+
+Then("visualizo a página inicial do sistema", () => {
     telaInicialPage.testarUrl();
+});
+
+Then("visualizo as mensagens de erro", (tabela) => {
+    var dadoTabela = tabela.rowsHash();
+    cadastroPage.verificarMensagemErro(dadoTabela.mensagem_um);
+    cadastroPage.verificarMensagemErro(dadoTabela.mensagem_dois);
 });

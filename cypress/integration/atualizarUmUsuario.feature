@@ -4,64 +4,59 @@ Feature: Atualizar um usuário
     Para poder manipular estas informações livremente
 
     Background: Base url e Define usuário aleatório
-        Given que acessei a página de atualizar usuário
+        Given acessei a tela inicial do sistema
+        And acessei a tela de atualizar usuário
 
-
-        Scenario: Atualiar usuário com sucesso
+@ignore
+        Scenario: Atualizar usuário com sucesso
             When clico no botão editar
-            #When preencho os dados do usuário
-            #| nome   | Rafael            | 
-            #| email  | rafalaa@gmail.com | 
-            #And clico no botão salvar
-            #Then visualizo uma mensagem de sucesso
-        
-    #         #Cadastra um novo usuário com email já cadastrado
-    #         And path "users"
-    #         And request userRepetido
-    #         When method post
-    #         Then status 422
-    #         And match response contains { error: "User already exists." }
-
-    #         # Deleta usuário criado anteriormente 
-    #         And path "users"
-    #         And path userId
-    #         When method delete
-    #         Then status 204
+            When preencho os dados do usuário
+            | nome   | Rafael            | 
+            | email  | rafalaa@gmail.com | 
+            And clico no botão salvar
+            Then visualizo uma mensagem de sucesso       
 @ignore
-        Scenario: Cadastrar um novo usuário sem colocar um email	
-           When preencho o campo nome
-           | nome   | Rafael           |
-           And clico no botão salvar
-           Then visualizo uma mensagem de erro
-           | mensagem | O campo e-mail é obrigatório. |
-@ignore
+        Scenario: Atualizar um usuário sem colocar um email	
+            When clico no botão editar
+            When preencho o campo nome
+            | nome   | Rafael           |
+            And apago o campo e-mail
+            And clico no botão salvar
+            Then visualizo uma mensagem de erro
+            | mensagem | O campo e-mail é obrigatório. |
+ @ignore
         Scenario: Cadastrar um novo usuário sem colocar um nome	
+            When clico no botão editar
             When preencho o campo email
             | email   | ratao@toma.com      |
+            And apago o campo nome
             And clico no botão salvar
             Then visualizo uma mensagem de erro
             | mensagem | O campo nome é obrigatório. |
 
 @ignore
         Scenario: Cadastrar um novo usuário com email sem "@"	
+            When clico no botão editar
             When preencho os dados do usuário
             | nome   | Rafael         |
             | email  | rataotoma.com  |
             And clico no botão salvar
             Then visualizo uma mensagem de erro
-            | mensagem | Formato de e-mail inválido. |
+            | mensagem | Formato de e-mail inválido |
     
 @ignore
-        Scenario: Cadastrar um novo usuário com email sem ".com"	
+        Scenario: Atualizar usuário com email sem ".com"	
+            When clico no botão editar
             When preencho os dados do usuário
             | nome   | Rafael         |
             | email  | rataotoma@     |
             And clico no botão salvar
             Then visualizo uma mensagem de erro
-            | mensagem | Formato de e-mail inválido. |
+            | mensagem | Formato de e-mail inválido |
 @ignore
         Scenario: Cadastrar um novo usuário com email com mais de 60 caracteres	
-           When preencho os dados do usuário
+            When clico no botão editar
+            When preencho os dados do usuário
             | nome   | Rafael                                                                   |
             | email  | rataotomarataotomarataotomarataotomarataotomarataotomarataotoma@oi.com     |
             And clico no botão salvar
@@ -69,6 +64,7 @@ Feature: Atualizar um usuário
             | mensagem | Informe no máximo 60 caracteres para o e-mail |
 @ignore
         Scenario: Cadastrar um novo usuário com nome com mais de 100 caracteres	
+            When clico no botão editar
             When preencho os dados do usuário
             | nome   | RafaelMouraRafaelMouraRafaelMouraRafaelMouraRafaelMouraRafaelMouraRafaelMouraRafaelMouraRafaelMouraRafaelMouraRafaelMoura |
             | email  | rataotoma@opa.com                                                                                                         |
@@ -76,12 +72,15 @@ Feature: Atualizar um usuário
             Then visualizo uma mensagem de erro
             | mensagem | Informe no máximo 100 caracteres para o nome |
 @ignore
-        Scenario: Cadastra um novo usuário com email já cadastrado
+        Scenario: Atualizar um usuário com email já cadastrado
+            When clico no botão editar
             When preencho os dados do usuário
             | nome   | Rafael                |
             | email  | rataotomoi@gmail.co   |
             And clico no botão salvar
-            And espero um segundo
+            When espero um segundo
+            Given acessei a tela de atualizar usuário
+            When clico no botão editar
             When preencho os dados do usuário
             | nome   | Rafael                |
             | email  | rataotomoi@gmail.co   |
@@ -90,6 +89,7 @@ Feature: Atualizar um usuário
             | mensagem | User already exists. | 
 @ignore
         Scenario: Cadastrar usuário com nome com menos de 4 caracteres
+            When clico no botão editar
             When preencho os dados do usuário
             | nome   | Raf        |
             | email  | raf@oi.com |
@@ -98,17 +98,19 @@ Feature: Atualizar um usuário
             | mensagem | Informe pelo menos 4 letras para o nome. |
 @ignore
         Scenario: Cadastrar usuário com e-mail com menos de 4 caracteres
-            When preencho os dados do usuário
-            | nome   | Rafaela                |
-            | email  | drataotomoi@gmail.co   |
-            And clico no botão salvar
-            And espero um segundo
+            When clico no botão editar
             When preencho os dados do usuário
             | nome   | Rafael              |
             | email  | ra                  |
+            And clico no botão salvar
             Then visualizo uma mensagem de erro
             | mensagem | Informe pelo menos 4 caracteres para o e-mail. |
 @ignore
         Scenario: Clicar no botão voltar
             When clico no botão voltar
-            Then visualizo a página de login
+            Then visualizo a página inicial do sistema
+
+@ignore
+        Scenario: Clicar no botão da Raro
+            When clico no botão da Raro
+            Then visualizo a página inicial do sistema

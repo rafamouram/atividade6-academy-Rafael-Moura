@@ -6,6 +6,12 @@ Feature: Criar Usuário
     Background: Base url e Define usuário aleatório
         Given que acessei a página de cadastro do usuário
 
+        Scenario: Criar usuário sem preencher nome e e-mail
+            When clico no botão salvar
+            Then visualizo as mensagens de erro
+            | mensagem_um   | O campo e-mail é obrigatório. |
+            | mensagem_dois | O campo nome é obrigatório.   |
+
     @ignore
         Scenario: Cadastrar um novo usuário
             When preencho os dados do usuário
@@ -13,19 +19,7 @@ Feature: Criar Usuário
             | email  | rafalaa@gmail.com | 
             And clico no botão salvar
             Then visualizo uma mensagem de sucesso
-        
-    #         #Cadastra um novo usuário com email já cadastrado
-    #         And path "users"
-    #         And request userRepetido
-    #         When method post
-    #         Then status 422
-    #         And match response contains { error: "User already exists." }
-
-    #         # Deleta usuário criado anteriormente 
-    #         And path "users"
-    #         And path userId
-    #         When method delete
-    #         Then status 204
+  
 @ignore
         Scenario: Cadastrar um novo usuário sem colocar um email	
            When preencho o campo nome
@@ -110,4 +104,9 @@ Feature: Criar Usuário
 @ignore
         Scenario: Clicar no botão voltar
             When clico no botão voltar
-            Then visualizo a página de login
+            Then visualizo a página inicial do sistema
+
+@ignore
+        Scenario: Clicar no botão da Raro
+            When clico no botão da Raro
+            Then visualizo a página inicial do sistema
