@@ -25,7 +25,7 @@ Feature: Atualizar um usuário
             Then visualizo uma mensagem de erro
             | mensagem | O campo e-mail é obrigatório. |
  @ignore
-        Scenario: Cadastrar um novo usuário sem colocar um nome	
+        Scenario: Atualizar usuário sem colocar um nome	
             When clico no botão editar
             When preencho o campo email
             | email   | ratao@toma.com      |
@@ -35,7 +35,7 @@ Feature: Atualizar um usuário
             | mensagem | O campo nome é obrigatório. |
 
 @ignore
-        Scenario: Cadastrar um novo usuário com email sem "@"	
+        Scenario: Atualizar usuário com email sem "@"	
             When clico no botão editar
             When preencho os dados do usuário
             | nome   | Rafael         |
@@ -54,7 +54,7 @@ Feature: Atualizar um usuário
             Then visualizo uma mensagem de erro
             | mensagem | Formato de e-mail inválido |
 @ignore
-        Scenario: Cadastrar um novo usuário com email com mais de 60 caracteres	
+        Scenario: Atualizar usuário para email com mais de 60 caracteres	
             When clico no botão editar
             When preencho os dados do usuário
             | nome   | Rafael                                                                   |
@@ -63,7 +63,7 @@ Feature: Atualizar um usuário
             Then visualizo uma mensagem de erro
             | mensagem | Informe no máximo 60 caracteres para o e-mail |
 @ignore
-        Scenario: Cadastrar um novo usuário com nome com mais de 100 caracteres	
+        Scenario: Atualizar usuário para nome com mais de 100 caracteres	
             When clico no botão editar
             When preencho os dados do usuário
             | nome   | RafaelMouraRafaelMouraRafaelMouraRafaelMouraRafaelMouraRafaelMouraRafaelMouraRafaelMouraRafaelMouraRafaelMouraRafaelMoura |
@@ -88,7 +88,7 @@ Feature: Atualizar um usuário
             Then visualizo uma mensagem de erro
             | mensagem | User already exists. | 
 @ignore
-        Scenario: Cadastrar usuário com nome com menos de 4 caracteres
+        Scenario: Atualizar usuário para nome com menos de 4 caracteres
             When clico no botão editar
             When preencho os dados do usuário
             | nome   | Raf        |
@@ -97,7 +97,7 @@ Feature: Atualizar um usuário
             Then visualizo uma mensagem de erro
             | mensagem | Informe pelo menos 4 letras para o nome. |
 @ignore
-        Scenario: Cadastrar usuário com e-mail com menos de 4 caracteres
+        Scenario: Atualizar usuário para e-mail com menos de 4 caracteres
             When clico no botão editar
             When preencho os dados do usuário
             | nome   | Rafael              |
