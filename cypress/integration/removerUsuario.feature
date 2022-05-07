@@ -1,26 +1,23 @@
-Feature: Remover um usuário
+Feature: Deletar um usuario
     Como uma pessoa qualquer
-    Desejo registrar informações de usuário
-    Para poder manipular estas informações livremente
+    Desejo remover um usuário
+    Para que suas informações não estejam mais registradas
 
-    Background: Base url e Define usuário aleatório
+    Background: Acessa o sistema
         Given acessei a tela inicial do sistema
-        And acessei a tela de atualizar usuário
+        Given cliquei no botão de lixeira
 
-@ignore
-        Scenario: Atualizar usuário com sucesso
-            When clico no botão editar
-            When preencho os dados do usuário
-            | nome   | Rafael            | 
-            | email  | rafalaa@gmail.com | 
-            And clico no botão salvar
-            Then visualizo uma mensagem de sucesso       
-@ignore
-        Scenario: Atualizar um usuário sem colocar um email	
-            When clico no botão editar
-            When preencho o campo nome
-            | nome   | Rafael           |
-            And apago o campo e-mail
-            And clico no botão salvar
-            Then visualizo uma mensagem de erro
-            | mensagem | O campo e-mail é obrigatório. |
+#@ignore
+        Scenario: Remover usuário com sucesso
+            When clico em confirmar
+            Then visualizo uma mensagem de sucesso de remoção
+            | mensagem | Usuário removido! |       
+#@ignore
+        Scenario: Cancelar a remoção de um usuário através do botão cancelar
+            When clico no botão de cancelar
+            Then visualizo a tela inicial	 
+
+#@ignore
+        Scenario: Cancelar a remoção de um usuário através do botão x
+            When clico no botão x
+            Then visualizo a tela inicial	

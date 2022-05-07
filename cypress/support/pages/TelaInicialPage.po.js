@@ -10,11 +10,15 @@ class TelaInicialPage {
     }
 
     testarUrl() {
-        cy.url().should("be.equal", "https://academy-crud-frontend.herokuapp.com/users");
+        cy.url().should("be.equal", "https://academy-crud-frontend.herokuapp.com/users/");
     }
 
     clicarBotaoVerDetalhes() {
         cy.contains("a", "Ver detalhes").click();
+    }
+
+    clicarBotaoLixeira() {
+        cy.get('.hhNJgA').click();
     }
 
 }

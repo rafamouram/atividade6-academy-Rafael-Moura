@@ -3,7 +3,7 @@ Feature: Criar Usuário
     Desejo registrar informações de usuário
     Para poder manipular estas informações livremente
 
-    Background: Base url e Define usuário aleatório
+    Background: Acessa o sistema e a página de registro de usuário
         Given que acessei a página de cadastro do usuário
 
         Scenario: Criar usuário sem preencher nome e e-mail

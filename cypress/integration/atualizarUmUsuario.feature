@@ -1,9 +1,9 @@
 Feature: Atualizar um usuário
     Como uma pessoa qualquer
-    Desejo registrar informações de usuário
-    Para poder manipular estas informações livremente
+    Desejo atualizar as informações de determinado usuário
+    Para ter o registro de suas informações atualizadas
 
-    Background: Base url e Define usuário aleatório
+    Background: Acessa o sistema e a tela de atualização de usuário
         Given acessei a tela inicial do sistema
         And acessei a tela de atualizar usuário
 
