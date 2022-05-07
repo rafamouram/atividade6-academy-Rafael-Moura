@@ -27,7 +27,7 @@ Feature: Atualizar um usuário
  @ignore
         Scenario: Atualizar usuário sem colocar um nome	
             When clico no botão editar
-            When atualizo o campo email
+            When atualizo o campo e-mail
             | email   | ratao@toma.com      |
             And apago o campo nome
             And clico no botão salvar
@@ -71,7 +71,7 @@ Feature: Atualizar um usuário
             And clico no botão salvar
             Then visualizo uma mensagem de erro
             | mensagem | Informe no máximo 100 caracteres para o nome |
-@ignore
+#@ignore
         Scenario: Atualizar um usuário com email já cadastrado
             When clico no botão editar
             When atualizo os dados do usuário
@@ -86,7 +86,7 @@ Feature: Atualizar um usuário
             | email  | rataotomoi@gmail.co   |
             And clico no botão salvar
             Then visualizo uma mensagem de erro
-            | mensagem | User already exists. | 
+            | mensagem | Este e-mail já é utilizado por outro usuário. | 
 @ignore
         Scenario: Atualizar usuário para nome com menos de 4 caracteres
             When clico no botão editar

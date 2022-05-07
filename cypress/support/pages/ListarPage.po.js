@@ -10,7 +10,7 @@ class ListarPage {
     }
 
     testarUrl() {
-        cy.url().should("be.equal", "https://academy-crud-frontend.herokuapp.com/users/");
+        cy.url().should("be.equal", "https://academy-crud-frontend.herokuapp.com/users");
     }
 
     clicarBotaoVerDetalhes() {

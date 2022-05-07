@@ -81,13 +81,13 @@ Feature: Criar Usuário
             | email  | rataotomoi@gmail.co   |
             And clico no botão salvar
             And espero um segundo
-            When preencho os dados do usuário
+            When preencho os dados do usuário com email já cadastrado
             | nome   | Rafael                |
             | email  | rataotomoi@gmail.co   |
             And clico no botão salvar
             Then visualizo uma mensagem de erro
-            | mensagem | User already exists. | 
-@ignore
+            | mensagem | Este e-mail já é utilizado por outro usuário. | 
+#@ignore
         Scenario: Cadastrar usuário com nome com menos de 4 caracteres
             When preencho os dados do usuário
             | nome   | Raf        |

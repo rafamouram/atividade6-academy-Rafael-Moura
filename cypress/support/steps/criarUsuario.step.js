@@ -23,6 +23,14 @@ Given("preencho os dados do usuário", (tabela) => {
     });
 });
 
+Given("preencho os dados do usuário com email já cadastrado", (tabela) => {
+    cadastroPage.preencherFormulario(tabela);
+    var dadosTabela = tabela.rowsHash();
+    cy.intercept("https://crud-api-academy.herokuapp.com/api/v1/users", {
+        statusCode: 422,
+    });
+});
+
 Then("visualizo uma mensagem de sucesso de cadastro", (mensagem) => {
     var dadoMensagem = mensagem.rowsHash();
     cadastroPage.verificarMensagemUsuarioSalvo(dadoMensagem.mensagem);
