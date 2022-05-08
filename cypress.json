@@ -1,7 +1,4 @@
 {
     "baseUrl": "https://academy-crud-frontend.herokuapp.com/users",
-    "testFiles": "**/*.feature",
-    "env": {
-        "TAGS": "not @ignore"
-    }
+    "testFiles": "**/*.feature"
 }

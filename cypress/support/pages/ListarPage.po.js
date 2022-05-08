@@ -17,6 +17,10 @@ class ListarPage {
         cy.contains("a", "Ver detalhes").click();
     }
 
+    clicarBotaoVerDetalhes2() {
+        cy.get(".bHNZIv").contains("a", "Ver detalhes").click();
+    }
+
     clicarBotaoLixeira() {
         cy.get('.hhNJgA').click();
     }

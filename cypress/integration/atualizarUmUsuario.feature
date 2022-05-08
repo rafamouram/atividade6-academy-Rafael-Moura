@@ -4,13 +4,20 @@ Feature: Atualizar um usuário
     Para ter o registro de suas informações atualizadas
 
     Background: Acessa o sistema e a tela de atualização de usuário
-        Given acessei a tela inicial do sistema
-        And acessei a tela de atualizar usuário
+        Given que acessei a página de cadastro do usuário
+        When preencho os dados do usuário
+            | nome   | Rafael            | 
+            | email  | rafalaa@gmail.com | 
+        And clico no botão salvar
+        Then visualizo uma mensagem de sucesso de cadastro
+            | mensagem | Usuário salvo com sucesso |
+         Given acessei a página inicial do sistema
+         Given acessei a tela de atualizar usuário
 
 @ignore
         Scenario: Atualizar usuário com sucesso
             When clico no botão editar
-            When atualizo os dados do usuário
+            When atualizo os dados do usuário com sucesso
             | nome   | Rafael            | 
             | email  | rafalaa@gmail.com | 
             And clico no botão salvar
@@ -71,19 +78,13 @@ Feature: Atualizar um usuário
             And clico no botão salvar
             Then visualizo uma mensagem de erro
             | mensagem | Informe no máximo 100 caracteres para o nome |
-#@ignore
-        Scenario: Atualizar um usuário com email já cadastrado
+@ignore
+        Scenario: Atualizar um usuário com email já cadastrado no sistema
             When clico no botão editar
-            When atualizo os dados do usuário
-            | nome   | Rafael                |
-            | email  | rataotomoi@gmail.co   |
-            And clico no botão salvar
-            When espero um segundo
-            Given acessei a tela de atualizar usuário
-            When clico no botão editar
-            When atualizo os dados do usuário
-            | nome   | Rafael                |
-            | email  | rataotomoi@gmail.co   |
+            When atualizo o campo nome
+            | nome   | Lucas                |
+            When atualizo o campo e-mail
+            | email  | rafalaa@gmail.com   |
             And clico no botão salvar
             Then visualizo uma mensagem de erro
             | mensagem | Este e-mail já é utilizado por outro usuário. | 

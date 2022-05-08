@@ -27,4 +27,3 @@ Then("visualizo a página de cadastro de usuário", (mensagem) => {
 Then("visualizo a lista de usuários cadastrados", () => {
     listarPage.visualizarListaDeUsuarios();
 });
-// Ops! Não existe nenhum usuário para ser exibido.
