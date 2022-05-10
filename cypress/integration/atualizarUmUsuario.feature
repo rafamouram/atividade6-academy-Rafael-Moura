@@ -115,7 +115,7 @@ Feature: Atualizar um usuário
             | texto | Editar |
             When atualizo o campo nome
             | nome   | Lucas                |
-            When atualizo o campo e-mail
+            When atualizo o campo e-mail com um e-mail já existente
             | email  | rafael@gmail.com   |
             And clico no botão salvar
             | texto | Salvar |
