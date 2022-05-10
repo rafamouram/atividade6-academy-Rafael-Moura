@@ -6,15 +6,13 @@ Feature: Atualizar um usuário
     Background: Acessa o sistema, cria um usuário e acessa a tela de atualização de usuário
     # Criando um usuário para que o teste possa ser executado    
         Given que acessei a página de cadastro do usuário
-        When preencho os dados do usuário
+        When preencho os dados do usuário corretamente
             | nome   | Rafael            | 
             | email  | rafalaa@gmail.com | 
         And clico no botão salvar
             | texto | Salvar |
-        Then visualizo uma mensagem de sucesso de cadastro
-            | mensagem | Usuário salvo com sucesso |
     # Acessando a tela de atualização de usuário
-        Given acessei a página inicial do sistema
+        When clico no botão da Crud
         Given acessei a tela de atualizar usuário
             | texto | Ver detalhes |
 
@@ -101,13 +99,11 @@ Feature: Atualizar um usuário
             # Criando usuário para teste, tendo certeza que tem ao menos dois usuários cadastrados 
             Given acessei a página inicial do sistema
             Given que acessei a página de cadastro do usuário
-            When preencho os dados do usuário
+            When preencho os dados do usuário corretamente
             | nome   | Rafael            | 
             | email  | rafael@gmail.com | 
             And clico no botão salvar
             | texto | Salvar |
-            Then visualizo uma mensagem de sucesso de cadastro
-            | mensagem | Usuário salvo com sucesso |
 
             # Acessando a tela de atualização de usuário
             Given acessei a página inicial do sistema
@@ -120,7 +116,7 @@ Feature: Atualizar um usuário
             When atualizo o campo nome
             | nome   | Lucas                |
             When atualizo o campo e-mail
-            | email  | rafalaa@gmail.com   |
+            | email  | rafael@gmail.com   |
             And clico no botão salvar
             | texto | Salvar |
             Then visualizo uma mensagem de erro

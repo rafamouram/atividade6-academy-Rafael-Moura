@@ -110,3 +110,11 @@ When("clico no botão cancelar", (texto) => {
 Then("visualizo a tela de atualizar usuário", () => {
     cy.contains('id');
 });
+
+When("atualizo o campo e-mail com um e-mail já existente", (email) => {
+    var dadoEmail = email.rowsHash();
+    atualizarPage.atualizarEmail(dadoEmail.email);
+    cy.intercept("PUT", "https://crud-api-academy.herokuapp.com/api/v1/users/**", {
+        statusCode: 422
+    });
+});

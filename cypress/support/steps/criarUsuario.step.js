@@ -12,7 +12,7 @@ Given("que acessei a página de cadastro do usuário", () => {
 Given("preencho os dados do usuário corretamente", (tabela) => {
     cadastroPage.preencherFormulario(tabela);
     var dadosTabela = tabela.rowsHash();
-    cy.intercept("https://crud-api-academy.herokuapp.com/api/v1/users", {
+    cy.intercept("POST", "https://crud-api-academy.herokuapp.com/api/v1/users", {
         statusCode: 201,
         body: [{
             "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -24,9 +24,8 @@ Given("preencho os dados do usuário corretamente", (tabela) => {
     });
 });
 
-Given("preencho os dados do usuário corretamente", (tabela) => {
+Given("preencho os dados do usuário", (tabela) => {
     cadastroPage.preencherFormulario(tabela);
-    var dadosTabela = tabela.rowsHash();
 });
 
 Given("preencho os dados do usuário com email já cadastrado", (tabela) => {
