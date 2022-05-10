@@ -27,7 +27,7 @@ class CadastroPage {
         cy.contains(mensagem).should("be.visible");
     }
 
-    clicarBotaoRaro() {
+    clicarBotaoCrud() {
         cy.get(".sc-dkzDqf.jbJCFN").click();
     }
 

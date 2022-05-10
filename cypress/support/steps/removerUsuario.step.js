@@ -8,6 +8,10 @@ Given('acessei a tela inicial do sistema', () => {
 
 When('clico em confirmar', (texto) => {
     var dadosTexto = texto.rowsHash();
+    cy.intercept("https://crud-api-academy.herokuapp.com/api/v1/users/**", {
+        statusCode: 204
+    });
+
     cy.clicarBotãoPorTexto(dadosTexto.texto);
 });
 

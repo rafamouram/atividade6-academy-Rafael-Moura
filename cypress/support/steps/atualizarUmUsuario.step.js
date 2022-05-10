@@ -76,8 +76,8 @@ When("clico no botão voltar", (texto) => {
     cy.clicarLinkPorTexto(dadosTexto.texto);
 });
 
-When("clico no botão da Raro", () => {
-    atualizarPage.clicarBotaoRaro();
+When("clico no botão da Crud", () => {
+    atualizarPage.clicarBotaoCrud();
 });
 
 Then("visualizo a página inicial do sistema", () => {

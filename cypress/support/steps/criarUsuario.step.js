@@ -9,7 +9,7 @@ Given("que acessei a página de cadastro do usuário", () => {
     cy.url().should("be.equal", "https://academy-crud-frontend.herokuapp.com/users/novo");
 });
 
-Given("preencho os dados do usuário", (tabela) => {
+Given("preencho os dados do usuário corretamente", (tabela) => {
     cadastroPage.preencherFormulario(tabela);
     var dadosTabela = tabela.rowsHash();
     cy.intercept("https://crud-api-academy.herokuapp.com/api/v1/users", {
@@ -22,6 +22,11 @@ Given("preencho os dados do usuário", (tabela) => {
             "updatedAt": "2022-05-07T13:19:35.351Z"
         }]
     });
+});
+
+Given("preencho os dados do usuário corretamente", (tabela) => {
+    cadastroPage.preencherFormulario(tabela);
+    var dadosTabela = tabela.rowsHash();
 });
 
 Given("preencho os dados do usuário com email já cadastrado", (tabela) => {
@@ -66,8 +71,8 @@ When("clico no botão voltar", () => {
     cy.clicarLinkPorTexto(dadosTexto.texto);
 });
 
-When("clico no botão da Raro", () => {
-    atualizarPage.clicarBotaoRaro();
+When("clico no botão da Crud", () => {
+    atualizarPage.clicarBotaoCrud();
 });
 
 Then("visualizo a página inicial do sistema", () => {

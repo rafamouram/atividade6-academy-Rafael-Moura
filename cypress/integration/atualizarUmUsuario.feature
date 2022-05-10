@@ -154,8 +154,8 @@ Feature: Atualizar um usuário
             Then visualizo a página inicial do sistema
 
     #@ignore
-        Scenario: Clicar no botão da Raro
-            When clico no botão da Raro
+        Scenario: Clicar no botão da Crud
+            When clico no botão da Crud
             Then visualizo a página inicial do sistema
 
     #@ignore

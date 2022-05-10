@@ -14,10 +14,10 @@ class ListarPage {
     }
 
     clicarBotaoLixeira() {
-        cy.get('.hhNJgA').click();
+        cy.get('.sc-kgflAQ.vggQs').eq(0).click();
     }
 
-    clicarBotaoRaro() {
+    clicarBotaoCrud() {
         cy.get(".sc-dkzDqf.jbJCFN").click();
     }
 

@@ -25,7 +25,7 @@ class AtualizarPage {
         cy.contains("Informações atualizadas com sucesso").should("be.visible");
     }
 
-    clicarBotaoRaro() {
+    clicarBotaoCrud() {
         cy.get(".sc-dkzDqf.jbJCFN").click();
     }
 
