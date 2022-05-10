@@ -13,16 +13,8 @@ class CadastroPage {
         cy.get(this.inputNome).type(nome);
     }
 
-    clicarBotaoSalvar() {
-        cy.contains("button", "Salvar").click();
-    }
-
     verificarMensagemUsuarioSalvo(mensagem) {
         cy.contains(mensagem).should("be.visible");
-    }
-
-    verificarBotaoVoltar() {
-        cy.contains("a", "Voltar").click();
     }
 
     preencherFormulario(tabela) {

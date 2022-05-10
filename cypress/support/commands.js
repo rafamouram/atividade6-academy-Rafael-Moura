@@ -23,3 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("clicarBotãoPorTexto", (texto) => {
+    cy.contains("button", texto).click();
+});
+
+Cypress.Commands.add("clicarLinkPorTexto", (texto) => {
+    cy.contains("a", texto).click();
+});

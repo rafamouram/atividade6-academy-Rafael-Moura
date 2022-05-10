@@ -3,10 +3,6 @@ class AtualizarPage {
     inputEmail = "#userEmail";
     inputNome = "#userName";
 
-    clicarBotaoEditar() {
-        cy.contains("button", "Editar").click();
-    }
-
     atualizarEmail(email) {
         this.apagarEmail();
         cy.get(this.inputEmail).type(email);
@@ -25,16 +21,8 @@ class AtualizarPage {
         cy.get(this.inputNome).clear();
     }
 
-    clicarBotaoSalvar() {
-        cy.contains("button", "Salvar").click();
-    }
-
     verificarMensagemUsuarioAtualizado() {
         cy.contains("Informações atualizadas com sucesso").should("be.visible");
-    }
-
-    verificarBotaoVoltar() {
-        cy.contains("a", "Voltar").click();
     }
 
     clicarBotaoRaro() {

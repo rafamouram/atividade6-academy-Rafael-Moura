@@ -4,7 +4,8 @@ import { cadastroPage } from '../pages/CadastroPage.po';
 
 Given("que acessei a página de cadastro do usuário", () => {
     listarPage.visitar();
-    listarPage.clicarBotaoNovo();
+    var texto = "Novo";
+    cy.clicarLinkPorTexto(texto);
     cy.url().should("be.equal", "https://academy-crud-frontend.herokuapp.com/users/novo");
 });
 
@@ -51,8 +52,9 @@ Then("visualizo uma mensagem de erro", (mensagem) => {
     cadastroPage.verificarMensagemErro(dadoMensagem.mensagem);
 });
 
-And("clico no botão salvar", () => {
-    cadastroPage.clicarBotaoSalvar();
+And("clico no botão salvar", (texto) => {
+    var dadosTexto = texto.rowsHash();
+    cy.clicarBotãoPorTexto(dadosTexto.texto);
 });
 
 And("espero um segundo", () => {
@@ -60,7 +62,8 @@ And("espero um segundo", () => {
 });
 
 When("clico no botão voltar", () => {
-    cadastroPage.verificarBotaoVoltar();
+    var dadosTexto = texto.rowsHash();
+    cy.clicarLinkPorTexto(dadosTexto.texto);
 });
 
 When("clico no botão da Raro", () => {

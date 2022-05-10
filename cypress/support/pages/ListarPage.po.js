@@ -5,32 +5,16 @@ class ListarPage {
         cy.visit("");
     }
 
-    clicarBotaoNovo() {
-        cy.contains("a", "Novo").click();
-    }
-
     testarUrl() {
         cy.url().should("be.equal", "https://academy-crud-frontend.herokuapp.com/users");
     }
 
-    clicarBotaoVerDetalhes() {
-        cy.contains("a", "Ver detalhes").click();
-    }
-
-    clicarBotaoVerDetalhes2() {
-        cy.get(".bHNZIv").contains("a", "Ver detalhes").click();
+    testarUrl2() {
+        cy.url().should("be.equal", "https://academy-crud-frontend.herokuapp.com/users/");
     }
 
     clicarBotaoLixeira() {
         cy.get('.hhNJgA').click();
-    }
-
-    clicarBotaoProxima() {
-        cy.contains("button", "Próxima").click();
-    }
-
-    clicarBotaoAnterior() {
-        cy.contains("button", "Anterior").click();
     }
 
     clicarBotaoRaro() {

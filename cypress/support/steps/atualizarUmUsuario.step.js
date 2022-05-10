@@ -8,16 +8,19 @@ Given("acessei a tela inicial do sistema", () => {
     listarPage.visitar();
 });
 
-And("acessei a tela de atualizar usuário", () => {
-    listarPage.clicarBotaoVerDetalhes();
+And("acessei a tela de atualizar usuário", (texto) => {
+    var dadosTexto = texto.rowsHash();
+    cy.clicarLinkPorTexto(dadosTexto.texto);
 });
 
 And("acessei a tela de atualizar usuário 2", () => {
     listarPage.clicarBotaoVerDetalhes2();
 });
 
-When("clico no botão editar", () => {
-    atualizarPage.clicarBotaoEditar();
+When("clico no botão editar", (texto) => {
+    var dadosTexto = texto.rowsHash();
+    cy.clicarBotãoPorTexto(dadosTexto.texto);
+
 });
 
 Given("preencho os dados do usuário", (tabela) => {
@@ -63,12 +66,14 @@ Then("visualizo uma mensagem de erro", (mensagem) => {
     atualizarPage.verificarMensagemErro(dadoMensagem.mensagem);
 });
 
-And("clico no botão salvar", () => {
-    atualizarPage.clicarBotaoSalvar();
+And("clico no botão salvar", (texto) => {
+    var dadosTexto = texto.rowsHash();
+    cy.clicarBotãoPorTexto(dadosTexto.texto);
 });
 
-When("clico no botão voltar", () => {
-    atualizarPage.verificarBotaoVoltar();
+When("clico no botão voltar", (texto) => {
+    var dadosTexto = texto.rowsHash();
+    cy.clicarLinkPorTexto(dadosTexto.texto);
 });
 
 When("clico no botão da Raro", () => {
@@ -95,4 +100,13 @@ When("atualizo o campo e-mail", (email) => {
 When("atualizo o campo nome", (nome) => {
     var dadoNome = nome.rowsHash();
     atualizarPage.atualizarNome(dadoNome.nome);
+});
+
+When("clico no botão cancelar", (texto) => {
+    var dadosTexto = texto.rowsHash();
+    cy.clicarBotãoPorTexto(dadosTexto.texto);
+});
+
+Then("visualizo a tela de atualizar usuário", () => {
+    cy.contains('id');
 });

@@ -16,9 +16,9 @@ Then("visualizo a mensagem de nenhum usuário cadastrado", (mensagem) => {
     listarPage.verificarSemUsuarios();
 });
 
-When("clico no botão para cadastrar um novo usuário", () => {
-    listarPage.verificarCadastrarSemUsuarios();
-});
+// When("clico no botão para cadastrar um novo usuário", () => {
+//     listarPage.verificarCadastrarSemUsuarios();
+// });
 
 Then("visualizo a página de cadastro de usuário", (mensagem) => {
     cadastroPage.testarUrl();

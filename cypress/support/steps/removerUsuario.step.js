@@ -6,16 +6,18 @@ Given('acessei a tela inicial do sistema', () => {
     listarPage.visitar();
 });
 
-When('clico em confirmar', () => {
-    removerPage.clicarBotaoConfirmar();
+When('clico em confirmar', (texto) => {
+    var dadosTexto = texto.rowsHash();
+    cy.clicarBotãoPorTexto(dadosTexto.texto);
 });
 
 Given('cliquei no botão de lixeira', () => {
     listarPage.clicarBotaoLixeira();
 });
 
-When('clico no botão de cancelar', () => {
-    removerPage.clicarBotaoCancelar();
+When('clico no botão de cancelar', (texto) => {
+    var dadosTexto = texto.rowsHash();
+    cy.clicarBotãoPorTexto(dadosTexto.texto);
 });
 
 When('clico no botão x', () => {
@@ -23,7 +25,7 @@ When('clico no botão x', () => {
 });
 
 Then('visualizo a tela inicial', () => {
-    listarPage.testarUrl();
+    listarPage.testarUrl2();
 });
 
 Then('visualizo uma mensagem de sucesso de remoção', (mensagem) => {

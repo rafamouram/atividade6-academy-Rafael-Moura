@@ -5,14 +5,15 @@ Feature: Listar usuários cadastrados
 
     Background: Acessar o sistema
         Given acessei a página inicial do sistema
-@ignore
-    Scenario: Listar usuários cadastrados
-        Then visualizo a lista de usuários cadastrados
+        
+    #@ignore
+        Scenario: Listar usuários cadastrados
+            Then visualizo a lista de usuários cadastrados
 
-@ignore
-    Scenario: Não há usuários cadastrados
-        Given não há usuários cadastrados
-        Then visualizo a mensagem de nenhum usuário cadastrado
+    #@ignore
+        Scenario: Não há usuários cadastrados
+            Given não há usuários cadastrados
+            Then visualizo a mensagem de nenhum usuário cadastrado
 
-        When clico no botão para cadastrar um novo usuário
-        Then visualizo a página de cadastro de usuário
+            When clico no botão para cadastrar um novo usuário
+            Then visualizo a página de cadastro de usuário
